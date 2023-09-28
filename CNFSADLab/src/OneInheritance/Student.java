@@ -29,5 +29,6 @@ class Student extends Person implements Student_Op {
 
 	     scanner.nextLine(); // Consume the newline character
 	     System.out.print("Your Final fees is"+this.fees);
+	     scanner.close();
 	 }
 	}
