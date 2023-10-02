@@ -43,9 +43,24 @@ where dname='R&D' and p.pendate<curdate();
 Give the details of the supervisor who is supervising more than 3 employees who have completed at least one project.
 */
 
+
+
 /*
 List the name of the dependents employee who has completed a total_projects worth 10L.
 */
+select d.dname,e.fname,sum(p.cost)  
+from deptbl d  
+left join emptbl e  on d.essn=e.ssn  
+left join workon w  on  e.ssn=w.essn  
+left join prgtbl p  on w.pid=p.pid  
+where 
+	w.pid is not null and 
+	(select curdate()) between p.pstdate and p.pendate   
+group by d.dname,e.fname  
+having sum(p.cost)>500000;
+
+
+
 
 /*
 List the department and employee details whose project is in more than one city.
