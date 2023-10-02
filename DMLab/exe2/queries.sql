@@ -67,4 +67,10 @@ where insdate=(
 
 /*Find the average sales of both type of panels in only commercial places*/
 
+select type,avg(cost) 
+from install i 
+left join panel p 
+	on i.pvm=p.pvm 
+where usg='Com' 
+group by type ;
 
