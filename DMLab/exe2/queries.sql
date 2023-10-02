@@ -43,6 +43,18 @@ where type='m';
 
 /*For the specific area display the total installation charges for both type of PV modules*/
 
+
 /*List the details of distributors and panel that is the oldest installation*/
+select i.tin,i.pvm,i.hno,cap,usg,warr,insdate,type,cost 
+from install i 
+left join panel  p 
+	on i.pvm=p.pvm 
+left join dist d 
+	on i.tin=d.tin 
+where insdate=(
+	select min(insdate) 
+	from install
+);
+
 
 /*Find the average sales of both type of panels in only commercial places*/
