@@ -33,15 +33,37 @@ db.doctor.aggregate([
 ])
 
 
-
+[INCOMPLETE]
 iv) List the details of pharmaceutical companies who supply drug to more than 1 pharmacies in the same city where company is located.
+db.pharm.aggregate([
+	{$unwind:'$contract'},
+	{$lookup:{from:'contract',foreignField:'id',localField:'contract',as:'contract'}},
+	{$unwind:'$contract'},
+	{$project:{_id:0,name:1,city:1,'contract.pcomname':1}},
+	{$lookup:{from:'pcom',foreignField:'name',localField:'contract.pcomname',as:'comploc'}},
+	{$unwind:'$comploc'},
+	{$project:{_id:0,name:1,city:1,'contract.pcomname':1,'comploc.city':1}},
+	{$match:{$expr:{$eq:['$city','$comploc.city']}}},
+	{$group:{_id:'$contract.pcomname',count:{$sum:1}}}
+])
+
+
 
 v). List the details of healthcare assistants who serve in the operation theatre.
+db.assistant.find({
+  wards: "op-theatre"
+})
 
 
 
 
 vi) List the details of drugs supplied by all pharmaceutical companies.
+db.pharm.aggregate([ 
+	{ $unwind: "$drug" }, 
+	{ $group: { _id: "$drug.name", pharmacies: { $addToSet: "$name" }, count: { $sum: 1 } } }, 
+	{ $match: { count: { $gte: db.pharm.find().count() } } }, 
+	{ $project: { _id: 0, drug: "$_id", pharmacies: 1 } }
+] )
 
 
 
