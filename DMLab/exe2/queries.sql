@@ -32,6 +32,14 @@ having cap>=(
 
 
 /*Display the area where monocrystalline panels are installed*/
+select distinct(address) 
+from install i 
+left join panel p 
+	on i.pvm=p.pvm 
+left join user u 
+	on i.hno=u.hno 
+where type='m';
+
 
 /*For the specific area display the total installation charges for both type of PV modules*/
 
