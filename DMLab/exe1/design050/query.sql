@@ -32,6 +32,12 @@ group by essn ;
 /*
 List all the ongoing projects controlled by all the departments.
 */
+select * 
+from prgtbl p 
+left join depttbl d 
+	on p.dno=d.dno 
+where dname='R&D' and p.pendate<curdate();
+
 
 /*
 Give the details of the supervisor who is supervising more than 3 employees who have completed at least one project.
