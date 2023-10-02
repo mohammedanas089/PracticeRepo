@@ -26,6 +26,13 @@ db.prescibe.aggregate([
 
 
 iii) Retrieve the details of the doctor with the maximum experience.
+db.doctor.aggregate([
+	{$group:{_id:null,maxexp:{$max:'$yoe'}}},
+	{$lookup:{from:'doctor',foreignField:'yoe',localField:'maxexp',as:'join'}},
+	{$project:{join:1}}
+])
+
+
 
 iv) List the details of pharmaceutical companies who supply drug to more than 1 pharmacies in the same city where company is located.
 
