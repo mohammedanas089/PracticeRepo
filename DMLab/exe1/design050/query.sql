@@ -65,3 +65,11 @@ having sum(p.cost)>500000;
 /*
 List the department and employee details whose project is in more than one city.
 */
+select pname,count(*) as count 
+from prgtbl p 
+left join proloc pl on p.pid=pl.pid 
+where pl.ploc is not null 
+group by pname 
+having count >1;
+
+
