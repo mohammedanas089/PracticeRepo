@@ -42,6 +42,14 @@ where type='m';
 
 
 /*For the specific area display the total installation charges for both type of PV modules*/
+select address,type,sum(cost) 
+from install i 
+left join user u 
+	on i.hno=u.hno 
+left join panel p 
+	on i.pvm=p.pvm 
+group by address,type ;
+
 
 
 /*List the details of distributors and panel that is the oldest installation*/
@@ -58,3 +66,5 @@ where insdate=(
 
 
 /*Find the average sales of both type of panels in only commercial places*/
+
+
