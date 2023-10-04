@@ -13,10 +13,13 @@ public class Main {
 
         thread1.start();
         thread2.start();
+        Thread obj=thread1;
         while(thread1.isAlive() || thread2.isAlive()) {
         System.out.println(thread1.getName()+" : "+thread1.getState());
+        obj.interrupt();
         System.out.println(thread2.getName()+" : "+thread2.getState());
         Thread.sleep(1000);
+        obj=thread2;
         }        
 
             thread1.join();
