@@ -30,7 +30,6 @@ class Staff extends Person implements Staff_Op {
 	     this.salary=salary+(salary*0.15);
 	     scanner.nextLine(); // Consume the newline character
 	     System.out.print("Your Final Salary is"+this.salary);
-	     scanner.close();
 	 }
 	}
 

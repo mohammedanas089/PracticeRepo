@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Main {
  public static void main(String[] args) {
      Scanner scanner = new Scanner(System.in);
-
      System.out.println("Enter staff details:");
      System.out.print("Name: ");
      String staffName = scanner.nextLine();
