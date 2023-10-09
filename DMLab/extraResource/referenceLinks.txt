@@ -5,3 +5,5 @@ Extra Lab related Resource:
     https://studyittoday.blogspot.com/2014/07/dbms-lab5-mysql.html
     https://studyittoday.blogspot.com/2014/07/v-behaviorurldefaultvmlo.html
     https://studyittoday.blogspot.com/2014/07/dbms-lab2-mysql.html
+    https://mitmysore.in/downloads/dbmslabmanual.pdf
+    http://studyittoday.blogspot.com/2014/07/dbms-lab5-mysql.html
