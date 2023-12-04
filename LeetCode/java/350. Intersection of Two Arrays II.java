@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public int[] intersect(int[] nums1, int[] nums2) {
         Map<Integer, Integer> map1 = new HashMap<>();

@@ -1,3 +1,6 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public int majorityElement(int[] nums) {
     Map<Integer,Integer> map= new HashMap<>();
