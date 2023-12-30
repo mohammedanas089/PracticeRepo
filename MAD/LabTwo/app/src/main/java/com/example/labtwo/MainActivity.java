@@ -1,29 +1,68 @@
 package com.example.labtwo;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Looper;
+import android.os.SystemClock;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Toast;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-
+    ProgressBar progressbar;
+    Button button;
+    int curprog=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button moveToSecondActivityButton = findViewById(R.id.button);
+        button=findViewById(R.id.progressbutton);
+        progressbar=findViewById(R.id.loadbar);
 
-        moveToSecondActivityButton.setOnClickListener(new View.OnClickListener() {
+        Timer t=new Timer();
+        TimerTask tt=new TimerTask() {
+            @Override
+            public void run() {
+                curprog+=5;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressbar.setProgress(curprog);
+                        if(curprog==100){
+                            Log.e(" ",String.valueOf(curprog));
+                            t.cancel();
+                            showCompletionMessage();
+                        }
+                    }
+                });
+
+            }
+        };
+
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Code to execute when the button is clicked
-                Intent intent = new Intent(MainActivity.this, MainActivity2.class);
-                intent.putExtra("userInput", "Checking");
-                startActivity(intent);
+                //SystemClock.sleep(1000);
+                t.schedule(tt,0,100);
+
             }
         });
+    }
+    private void showCompletionMessage() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Process Completed!")
+                .setPositiveButton("OK", null)
+                .create()
+                .show();
     }
 }

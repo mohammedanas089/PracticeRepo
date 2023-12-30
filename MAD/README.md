@@ -1,0 +1,4 @@
+- Incase of error while running, look at `~/.cache/Google/AndroidStudio2023.1/log/idea.log for error stack`
+- When encountered `The emulator process for AVD _ has terminated.` error, follow either of below solution:
+    - Free up disk space to accomodate the emulator device
+    - Install minimum emulator with smaller resolution and older OS like "Small Phone API 28"
