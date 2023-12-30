@@ -7,9 +7,9 @@ This file includes some of the debug/error solution found to resolve certain sit
     ```
 - Make sure the name mentioned in testBean file matches the application and class name created
 - The Class(both main and supplementary) needs to in project application directory, testBean in resource directory
+- Just read the class files and testbean for logic and needs
 
-
-`These points maybe be incorrect`
+`Note:These points maybe be incorrect`
 
 
 
