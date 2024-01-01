@@ -20,17 +20,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="342dp"
+        android:checked="true"
         android:text="Switch"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:checked="true" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="89dp"
-        android:layout_height="209dp"
+        android:layout_width="360dp"
+        android:layout_height="42dp"
         android:text="Click on the switch to enable or disable the button. Press or release the button to show the pop ups."
-        tools:layout_editor_absoluteX="159dp"
-        tools:layout_editor_absoluteY="122dp" />
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="248dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

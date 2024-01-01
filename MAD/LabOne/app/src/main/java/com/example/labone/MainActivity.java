@@ -5,6 +5,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        TextView textView=findViewById(R.id.textView);
         Button button = findViewById(R.id.button);
         Switch switchButton = findViewById(R.id.switch1);
         button.setOnTouchListener(new View.OnTouchListener() {
@@ -35,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         switchButton.setOnCheckedChangeListener((buttonView, isChecked) -> {
             button.setEnabled(isChecked);
+            textView.setVisibility(isChecked ? View.VISIBLE : View.INVISIBLE);
             showToast(isChecked ? "Button Enabled" : "Button Disabled");
         });
     }
