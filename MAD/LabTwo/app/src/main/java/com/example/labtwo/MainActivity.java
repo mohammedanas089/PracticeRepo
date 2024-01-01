@@ -18,16 +18,15 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
-    ProgressBar progressbar;
-    Button button;
+
     int curprog=0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        button=findViewById(R.id.progressbutton);
-        progressbar=findViewById(R.id.loadbar);
+        Button button=findViewById(R.id.progressbutton);
+        ProgressBar progressbar=findViewById(R.id.loadbar);
 
         Timer t=new Timer();
         TimerTask tt=new TimerTask() {
