@@ -13,21 +13,28 @@ import android.widget.Button;
 public class MainActivity extends AppCompatActivity {
 
     Button button,button2;
+    Fragment frag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         button=findViewById(R.id.button);
-
+        button2=findViewById(R.id.button2);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i("",String.valueOf("Pressed"));
-                //button.setVisibility(View.GONE);
-                Fragment frag1=new FragmentOne();
+                frag=new FragmentOne();
                 FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-                fragmentTransaction.replace(R.id.container,frag1).commit();
+                fragmentTransaction.replace(R.id.container,frag).commit();
+            }
+        });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                frag=new FragmentTwo();
+                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+                fragmentTransaction.replace(R.id.container,frag).commit();
             }
         });
 
