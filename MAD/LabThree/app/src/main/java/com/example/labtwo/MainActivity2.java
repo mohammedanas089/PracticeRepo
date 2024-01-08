@@ -15,10 +15,9 @@ public class MainActivity2 extends AppCompatActivity {
         TextView tv =findViewById(R.id.textView2);
         TextView pass =findViewById(R.id.textView3);
 
-        String welcomemessage ="Welcome, "+ getIntent().getStringExtra("mail")+". Greetings. Your password is ";
+        String welcomemessage ="Name : "+ getIntent().getStringExtra("mail");
         tv.setText(welcomemessage);
-        pass.setText(getIntent().getStringExtra("pass"));
-        pass.setPaintFlags(pass.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        pass.setText("Passoword : "+getIntent().getStringExtra("pass"));
 
     }
 }
