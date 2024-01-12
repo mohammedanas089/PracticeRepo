@@ -8,11 +8,11 @@ def rotateArray(arr,k):
     
     newarr=[]
     for i in range(0,len(arr)):
-        loc=(i+k)%len(arr)
+        loc=(i+k+1)%len(arr)
         newarr.append(arr[loc])
     return newarr
 
-arr=[1,2,3,4,5]
+arr=[10, 20, 30, 40, 50]
 k=2
 newarr=rotateArray(arr,k)
 print(newarr)
