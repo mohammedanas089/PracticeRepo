@@ -28,29 +28,31 @@ public class MainActivity extends AppCompatActivity {
         Button button=findViewById(R.id.progressbutton);
         ProgressBar progressbar=findViewById(R.id.loadbar);
 
-        Timer t=new Timer();
-        TimerTask tt=new TimerTask() {
-            @Override
-            public void run() {
-                curprog+=5;
-                runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        progressbar.setProgress(curprog);
-                        if(curprog==100){
-                            Log.e(" ",String.valueOf(curprog));
-                            t.cancel();
-                            showCompletionMessage();
-                        }
-                    }
-                });
 
-            }
-        };
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Timer t=new Timer();
+                TimerTask tt=new TimerTask() {
+                    @Override
+                    public void run() {
+                        curprog+=5;
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressbar.setProgress(curprog);
+                                if(curprog==100){
+                                    Log.e(" ",String.valueOf(curprog));
+                                    t.cancel();
+                                    curprog=0;
+                                    showCompletionMessage();
+                                }
+                            }
+                        });
+
+                    }
+                };
                 //SystemClock.sleep(1000);
                 t.schedule(tt,0,100);
 
@@ -60,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
     private void showCompletionMessage() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Process Completed!")
+                .setTitle("PoP UP")
+                .setNegativeButton("Close app",(dialog, which) -> {
+                    finish();
+                })
                 .setPositiveButton("OK", null)
                 .create()
                 .show();
