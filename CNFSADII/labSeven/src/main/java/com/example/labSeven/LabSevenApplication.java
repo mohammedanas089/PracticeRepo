@@ -14,17 +14,39 @@ public class LabSevenApplication {
 	public static void main(String[] args) {
 		ApplicationContext context=SpringApplication.run(LabSevenApplication.class, args);
         Scanner scanner = new Scanner(System.in);
-
+        int ch;
+        String name;
+        int marks;
 		StudentService studentService= context.getBean(StudentService.class);
-		 
-studentService.insertMessage("XYZ",94);
+		while(true) { 
+			System.out.println("MENU\n1.Enter name\n2.Display table\n3.Exit");
+			
+			switch (scanner.nextInt()) {
+			case 1: {
+				System.out.println("Enter Student name:");
+				name=scanner.next();
+				System.out.println("Enter Marks");
+				marks=scanner.nextInt();
+				studentService.insertMessage(name,marks);
+break;
+			}
+				
 		
-		List<Student> cl = studentService.displayMessage();
-		
-		for(Student m: cl) {
-			System.out.println(m.getName());
-		}
+case 2: {
+	List<Student> cl = studentService.displayMessage();
+	
+	for(Student m: cl) {
+		System.out.println(m.getName()+"--"+m.getTotalmarks());
 	}
+	break;
+				
+			}
+case 3: {
+	System.exit(0);
+}
+		
+	}
+		}
 	
 }
-
+}
