@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Service Worker Registration LabSet</title>
+    <link rel="manifest" href="manifest.json">
+    <script src="app.js"></script>
+  </head>  
+  <body>
+    <div >
+      <h1>
+        Service Worker
+      </h1>
+      <p>
+        Check within your browser developer tools service worker registration status
+      </p>
+      
+      <section >
+        <p>Username: <input type="text" name="username" id="username"></p>
+<p>Password: <input type="password" name="password" id="password"></p>
+<p><input type="submit" value="check" onclick="verify()"></p>
+        <button onclick="unregister()" >Unregister</button>
+      </section>
+      
+      <output></output>
+    </div>
+  </body>
+</html>
