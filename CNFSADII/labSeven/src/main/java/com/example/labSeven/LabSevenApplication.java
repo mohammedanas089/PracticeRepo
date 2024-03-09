@@ -6,8 +6,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import ch.qos.logback.core.net.ssl.SSL;
-
 @SpringBootApplication
 public class LabSevenApplication {
 
@@ -19,7 +17,7 @@ public class LabSevenApplication {
         int marks;
 		StudentService studentService= context.getBean(StudentService.class);
 		while(true) { 
-			System.out.println("MENU\n1.Enter name\n2.Display table\n3.Exit");
+			System.out.println("MENU\n1.Enter name\n2.Display table\n3.Update\n4.Exit");
 			
 			switch (scanner.nextInt()) {
 			case 1: {
@@ -36,12 +34,21 @@ case 2: {
 	List<Student> cl = studentService.displayMessage();
 	
 	for(Student m: cl) {
-		System.out.println(m.getName()+"--"+m.getTotalmarks());
+		System.out.println(m.toString());
 	}
 	break;
 				
 			}
 case 3: {
+	System.out.println("Enter Student id:");
+	ch=scanner.nextInt();
+	System.out.println("Enter updated Marks");
+	marks=scanner.nextInt();
+	studentService.updateMessage(ch, marks);
+break;
+}
+
+case 4: {
 	System.exit(0);
 }
 		

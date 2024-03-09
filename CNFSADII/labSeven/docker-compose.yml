@@ -1,0 +1,29 @@
+version: '3'
+services:
+  labnine:
+    build: .
+    container_name: labapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - labninesql
+    networks:
+      - labsevennetwork
+
+  labninesql:
+    image: mysql:latest
+    container_name: labsql
+    ports:
+      - "3307:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=test
+      - MYSQL_DATABASE=test
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+    networks:
+      labsevennetwork:
+        ipv4_address: 190.168.1.3 
+
+networks:
+  labsevennetwork:
+    external: true
